@@ -40,10 +40,10 @@ Most price-prediction models lean on listing-time signals (asking price, days on
 | Linear Regression (Final) | 0.8630 | 0.1698 | $291,679 |
 | Decision Tree | 0.8552 | 0.1340 | $299,919 |
 | Random Forest | 0.8850 | 0.1129 | $267,299 |
-| CatBoost | TBD | TBD | TBD |
-| LightGBM | TBD | TBD | TBD |
-| XGBoost | TBD | TBD | TBD |
-| XGB+LGB+CatBoost stacked (Ridge) | 0.9137 | 0.1000 | $231,493 |
+| CatBoost | 0.9066 | 0.1049 | $240,837 |
+| LightGBM | 0.9102 | 0.1022 | $236,168 |
+| XGBoost | 0.9101 | 0.1031 | $236,303 |
+| XGB+LGB+CatBoost stacked (Ridge) | 0.9145 | 0.1010 | $230,496 |
 ## Repository structure
 
 ```
