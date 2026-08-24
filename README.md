@@ -12,7 +12,7 @@ Most price-prediction models lean on listing-time signals (asking price, days on
 - **Walk-forward validation** — trains on a rolling window of the 12 months immediately preceding the moving test month to reflect how the model would actually be retrained over time.
 - **Scope** — restricted to single family residential listings.
 - **Stacked ensemble over a single model** — the final model blends XGBoost, LightGBM, and CatBoost through a Ridge meta-learner rather than picking one winner. Each base model brings different strengths (e.g. CatBoost's native handling of high-cardinality categoricals), and letting Ridge learn the combination weights outperformed any single tuned model or a hand-picked blend ratio.
-- **The Streamlit demo intentionally uses a simpler, separate model.** The interactive UI takes four raw inputs (living area, beds, baths, lot size) and serves predictions from a standalone `RandomForestRegressor` trained directly on those columns, rather than the full stacked ensemble. The ensemble's strongest signal (`CompPriceKNN`, spatial joins, engineered ratios) isn't derivable from four raw inputs alone, so reusing it in the demo would mean silently falling back to defaults for most of what makes it accurate — a smaller model trained for exactly the inputs available is a more honest match for what the demo can actually know.
+- **The Streamlit demo intentionally uses a simpler, separate model.** *In Progress*
 
 ## Dataset
 
