@@ -8,10 +8,10 @@ Most price-prediction models lean on listing-time signals (asking price, days on
 
 ## Key design decisions
 
-- **Leakage-aware feature set** — `ListPrice`, `DaysOnMarket`, and other listing-time-only fields are excluded. Including them would make the model unusable for off-market inference and would silently inflate offline accuracy.
-- **Walk-forward validation** — trains on a rolling window of the 12 months immediately preceding the moving test month to reflect how the model would actually be retrained over time.
-- **Scope** — restricted to single family residential listings.
-- **Stacked ensemble over a single model** — the final model blends XGBoost, LightGBM, and CatBoost through a Ridge meta-learner rather than picking one winner. Each base model brings different strengths (e.g. CatBoost's native handling of high-cardinality categoricals), and letting Ridge learn the combination weights outperformed any single tuned model or a hand-picked blend ratio.
+- **Leakage-aware feature set** - `ListPrice`, `DaysOnMarket`, and other listing-time-only fields are excluded. Including them would make the model unusable for off-market inference and would silently inflate offline accuracy.
+- **Walk-forward validation** - trains on a rolling window of the 12 months immediately preceding the moving test month to reflect how the model would actually be retrained over time.
+- **Scope** - restricted to single family residential listings.
+- **Stacked ensemble over a single model** - the final model blends XGBoost, LightGBM, and CatBoost through a Ridge meta-learner rather than picking one winner. Each base model brings different strengths (e.g. CatBoost's native handling of high-cardinality categoricals), and letting Ridge learn the combination weights outperformed any single tuned model or a hand-picked blend ratio.
 - **The Streamlit demo intentionally uses a simpler, separate model.** *In Progress*
 
 ## Dataset
@@ -41,7 +41,7 @@ Most price-prediction models lean on listing-time signals (asking price, days on
 crmls-price-prediction/
 ├── notebooks/                  # numbered analysis notebooks (01–08), run in order
 ├── app/                        # Streamlit demo (app.py, train_model.py)
-├── data/                       # gitignored — not committed; parquet handoffs between notebooks, model artifacts
+├── data/                       # gitignored - not committed; parquet handoffs between notebooks, model artifacts
 └── README.md
 ```
 
