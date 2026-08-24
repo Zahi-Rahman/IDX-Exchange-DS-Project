@@ -22,7 +22,7 @@ Most price-prediction models lean on listing-time signals (asking price, days on
 
 ## Feature Engineering
 
-Five engineered features made it into the final model, each validated individually before inclusion - tested as a single addition against a Random Forest baseline first, then confirmed on the actual gradient-boosting ensemble via SHAP:
+These key engineered features made it into the final model, each tested as a single addition against a Random Forest baseline first, then confirmed on the actual gradient-boosting ensemble:
 
 - **`CompPriceKNN`** - mean close price of the 15 nearest geographic comps (raw lat/long), computed without any information from the row being predicted. By far the strongest single feature in the final model (SHAP-confirmed).
 - **`BedBathRatio`** - bedrooms ÷ bathrooms, computed from unscaled raw values.
@@ -32,7 +32,7 @@ Five engineered features made it into the final model, each validated individual
 
 **Tested and rejected**: cyclical time encoding (a single-year training window doesn't span enough seasons to separate seasonal effects from the overall price trend), a per-square-foot variant of the comp feature (redundant with `CompPriceKNN`), and a raw amenity count (negligible signal). Kept as documented negative results rather than deleted, so they don't get accidentally retried later.
 
-**Pruned**: three near-zero-importance features (`AttachedGarageYN`, `Level_MultiSplit`, `BasementYN`) were dropped after gain-based importance analysis on the tuned models showed removing them cost nothing. A threshold sweep found this exact cutoff - more aggressive pruning measurably hurt performance, so the line was drawn empirically rather than by guess.
+**Pruned**: three near-zero-importance features (`AttachedGarageYN`, `Level_MultiSplit`, `BasementYN`) were dropped after gain-based importance analysis on the tuned models showed removing them cost nothing. A threshold sweep found this exact cutoff where more aggressive pruning measurably hurt performance, so the line was drawn empirically rather than by guess.
 
 
 ## Results
