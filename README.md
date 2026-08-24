@@ -34,9 +34,6 @@ Five engineered features made it into the final model, each validated individual
 
 **Pruned**: three near-zero-importance features (`AttachedGarageYN`, `Level_MultiSplit`, `BasementYN`) were dropped after gain-based importance analysis on the tuned models showed removing them cost nothing. A threshold sweep found this exact cutoff - more aggressive pruning measurably hurt performance, so the line was drawn empirically rather than by guess.
 
-**One finding worth flagging**: `FireHazardZone` looked like the second-strongest individual feature in early Random Forest testing, but SHAP analysis on the actual ensemble showed its real marginal contribution is small - `CompPriceKNN` already captures most of the same spatial signal implicitly, since nearby comp prices reflect local fire risk (and everything else about a location) without needing it labeled explicitly. A reminder that a feature's standalone predictive power and its marginal value inside a larger model aren't the same thing.
-
-**In progress, not yet merged**: leakage-safe local price aggregates (ZIP/district-level trailing-window median price-per-sqft, 90th-percentile price, and sales count as a market-liquidity signal) plus a raw/log1p prediction blend, adapted from a collaborator's independently-validated approach. Early results are promising but haven't yet replaced the model reflected in the Results table below.
 
 ## Results
 
